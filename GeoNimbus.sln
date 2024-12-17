@@ -12,6 +12,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project GeoNimbus", "Projec
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.Core", "GeoNimbus.Core\GeoNimbus.Core.csproj", "{11DF5357-1E83-4918-B627-1418DC3EF38C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.Contracts", "GeoNimbus.Contracts\GeoNimbus.Contracts.csproj", "{7BFDD47A-D0A6-4013-A4BA-835AED1475B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.Sqlite", "GeoNimbus.Sqlite\GeoNimbus.Sqlite.csproj", "{701E6E30-B8C4-4DFB-AA25-9B0DBDA1DF06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.LibNetTopologySuite", "GeoNimbus.LibNetTopologySuite\GeoNimbus.LibNetTopologySuite.csproj", "{BC2BC440-C155-430C-B987-184C2B015C83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.GeoHash", "GeoNimbus.GeoHash\GeoNimbus.GeoHash.csproj", "{4E235AC5-AF31-4C70-8075-8D44ACB646D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +32,26 @@ Global
 		{9F5E6D71-C2B3-4D3E-8ECB-FCC6DA5F4FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F5E6D71-C2B3-4D3E-8ECB-FCC6DA5F4FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F5E6D71-C2B3-4D3E-8ECB-FCC6DA5F4FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DF5357-1E83-4918-B627-1418DC3EF38C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DF5357-1E83-4918-B627-1418DC3EF38C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DF5357-1E83-4918-B627-1418DC3EF38C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DF5357-1E83-4918-B627-1418DC3EF38C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFDD47A-D0A6-4013-A4BA-835AED1475B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFDD47A-D0A6-4013-A4BA-835AED1475B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFDD47A-D0A6-4013-A4BA-835AED1475B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFDD47A-D0A6-4013-A4BA-835AED1475B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{701E6E30-B8C4-4DFB-AA25-9B0DBDA1DF06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701E6E30-B8C4-4DFB-AA25-9B0DBDA1DF06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701E6E30-B8C4-4DFB-AA25-9B0DBDA1DF06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701E6E30-B8C4-4DFB-AA25-9B0DBDA1DF06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC2BC440-C155-430C-B987-184C2B015C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2BC440-C155-430C-B987-184C2B015C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2BC440-C155-430C-B987-184C2B015C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC2BC440-C155-430C-B987-184C2B015C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E235AC5-AF31-4C70-8075-8D44ACB646D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E235AC5-AF31-4C70-8075-8D44ACB646D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E235AC5-AF31-4C70-8075-8D44ACB646D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E235AC5-AF31-4C70-8075-8D44ACB646D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
