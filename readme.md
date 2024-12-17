@@ -301,16 +301,19 @@ I would consider this first set of features as "Phase 1"
      - **Hot Cache**: In-memory caching using spatial data structures (e.g., R-Tree, QuadTree, KD-Tree).
      - **Cold Cache**: SQLite for less frequently accessed data.
    - Configurable eviction policy for hot cache (e.g., Least Recently Used).
+   - **DONE**
 
 2. **Geocoding**
    - Convert address to latitude/longitude.
    - Convert address to geohash.
    - Batch geocoding for multiple addresses.
+   - **DONE**
 
 3. **Reverse Geocoding**
    - Convert latitude/longitude to the nearest address.
    - Convert geohash to the corresponding address or bounding box.
    - Batch reverse geocoding for multiple coordinates.
+   - **DONE**
 
 4. **Spatial Queries**
    - Find the nearest point to a given latitude/longitude.
@@ -319,10 +322,12 @@ I would consider this first set of features as "Phase 1"
    - Generate heatmaps for a specified geographic region.
    - Retrieve neighboring geohashes for a given geohash.
    - Cluster points by geohash or other criteria.
+   - **DONE**
 
 5. **Distance Calculation**
    - Use Haversine formula for precise distance between coordinates.
    - Apply bounding box approximations for faster filtering when precision is less critical.
+   - **DONE**
 
 
 #### **API Design and Patterns**
@@ -330,9 +335,11 @@ I would consider this first set of features as "Phase 1"
    - Expose geospatial features via REST endpoints.
    - Define clear, concise endpoints with appropriate HTTP methods (GET, POST).
    - Support query parameters for customizable requests (e.g., precision, filters).
+   - **DONE**
 
 7. **Async/Await for Non-Blocking Operations**
    - All APIs must use asynchronous methods to handle concurrent requests efficiently.
+   - **DONE**
 
 
 8. **Health Endpoint Monitoring**
@@ -345,6 +352,7 @@ I would consider this first set of features as "Phase 1"
    - Capture logs for API usage, errors, and performance metrics.
    - Use distributed tracing tools like Application Insights or OpenTelemetry.
    - Log details like request execution time, cache hits/misses, and database fallback usage.
+   - **DONE**
 
 
 #### **Cloud Native Design**
@@ -368,8 +376,23 @@ I would consider this first set of features as "Phase 1"
       - Request and response examples.
       - Error handling details.
       - Description of query parameters and return types.
+   - **DONE** / Via Swagger and OpenAPI
 
 ---
+Phase 1 Action Items:
+1. Create a data migration to postgres
+1. Create an repository for postgres, and swap it in
+1. Unit tests
+1. ensure logging works
+1. Dockerfile and docker-compose.yml for
+    1. sqlite
+    1. postgres
+1. Cache in Redis, add new docker-compose.ymkl
+
+---
+
+
+
 
 ### **Phase-Based Advanced Features**
 
