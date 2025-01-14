@@ -4,7 +4,10 @@ namespace GeoNimbus {
 
         public static async Task Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Host.ConfigureLogging(logging => {
+                logging.ClearProviders();
+                logging.AddConsole();
+            });
             // Configure configuration sources
             builder.Configuration
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false) // Base settings

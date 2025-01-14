@@ -1,5 +1,9 @@
 using GeoNimbus.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics.Metrics;
+using System.IO;
+using System.Reflection.Emit;
 
 namespace GeoNimbus.Controllers;
 
@@ -31,6 +35,7 @@ public class GeocodeController : ControllerBase {
             if (result == null)
                 return NotFound();
 
+            _logger.LogInformation("OK GetAddressByIdAsync for {id}", id);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation was canceled."); // HTTP 408: Request Timeout
@@ -46,6 +51,7 @@ public class GeocodeController : ControllerBase {
             if (result == null)
                 return NotFound();
 
+            _logger.LogInformation("OK Geocode for {zipcode} {number} {street} {city} {state} {country}", zipcode, number, street, city, state, country);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation was canceled."); // HTTP 408: Request Timeout
@@ -60,7 +66,7 @@ public class GeocodeController : ControllerBase {
             var result = await _addressService.ReverseGeocodeAsync(latitude, longitude, cts.Token);
             if (result == null)
                 return NotFound();
-
+            _logger.LogInformation("OK ReverseGeocodeAsync for {latitude} {longitude}", latitude, longitude);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation was canceled."); // HTTP 408: Request Timeout
@@ -72,6 +78,7 @@ public class GeocodeController : ControllerBase {
         try {
             using var cts = new CancellationTokenSource(_timeout);
             var result = await _addressService.QueryByBoundingBoxAsync(minLat, maxLat, minLon, maxLon, cts.Token);
+            _logger.LogInformation("OK QueryByBoundingBoxAsync for {minLat} {maxLat} {minLon} {maxLon}", minLat, maxLat, minLon, maxLon);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation was canceled."); // HTTP 408: Request Timeout
@@ -83,6 +90,7 @@ public class GeocodeController : ControllerBase {
         try {
             using var cts = new CancellationTokenSource(_timeout);
             var result = await _addressService.QueryByRadiusAsync(latitude, longitude, radiusKm, cts.Token);
+            _logger.LogInformation("OK QueryByRadiusAsync for {latitude} {longitude} {radiusKm}", latitude, longitude, radiusKm);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation was canceled."); // HTTP 408: Request Timeout
@@ -99,6 +107,7 @@ public class GeocodeController : ControllerBase {
             if (result == null)
                 return NotFound("No results found for the specified geohash prefix.");
 
+            _logger.LogInformation("OK QueryByGeohashAsync for {geohash}", geohash);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation timed out."); // HTTP 408: Request Timeout
@@ -117,6 +126,7 @@ public class GeocodeController : ControllerBase {
             if (result == null || result.Count == 0)
                 return NotFound("No results found for the specified geohash prefix.");
 
+            _logger.LogInformation("OK QueryByGeohashPrefixAsync for {geohashPrefix}", geohashPrefix);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation timed out."); // HTTP 408: Request Timeout

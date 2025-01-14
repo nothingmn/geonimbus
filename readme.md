@@ -347,6 +347,7 @@ I would consider this first set of features as "Phase 1"
      - Hot cache availability and memory usage.
      - Cold cache connection health.
      - System resource usage (e.g., CPU, memory).
+   - **DONE**
 
 9. **Logging and Telemetry**
    - Capture logs for API usage, errors, and performance metrics.
