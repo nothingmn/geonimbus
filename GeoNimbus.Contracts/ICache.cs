@@ -7,4 +7,6 @@ public interface ICache<T> {
     List<T> Query(double minLat, double maxLat, double minLon, double maxLon);
 
     bool TryGet(string id, out T value);
+
+    bool TryRemove(string id, out T value);
 }

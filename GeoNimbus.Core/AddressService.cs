@@ -11,11 +11,13 @@ public class AddressService : IAddressService {
     private readonly IAddressRepository _repository;
     private readonly ICache<Address> _cache;
     private readonly IConfiguration _configuration;
+    private readonly IGeoHash _geoHash;
 
-    public AddressService(IAddressRepository repository, ICache<Address> cache, IConfiguration configuration) {
+    public AddressService(IAddressRepository repository, ICache<Address> cache, IConfiguration configuration, IGeoHash geoHash) {
         _repository = repository;
         _cache = cache;
         _configuration = configuration;
+        _geoHash = geoHash;
         var connectionString = _configuration.GetConnectionString("AddressDatabase");
         this.Init(connectionString).GetAwaiter().GetResult();
     }
@@ -77,17 +79,17 @@ public class AddressService : IAddressService {
 
         // Query the database if no results found in the cache
         var addresses = await _repository.QueryByBoundingBoxAsync(minLat, maxLat, minLon, maxLon, cancellationToken);
-        foreach (var address in addresses) {
-            _cache.Add(address.Latitude, address.Longitude, address.Id.ToString(), address);
-        }
+        //foreach (var address in addresses) {
+        //    _cache.Add(address.Latitude, address.Longitude, address.Id.ToString(), address);
+        //}
 
         return addresses;
     }
 
-    public async Task<List<Address>> QueryByRadiusAsync(double latitude, double longitude, double radius, CancellationToken cancellationToken) {
+    public async Task<List<Address>> QueryByRadiusAsync(double latitude, double longitude, double radiusKm, CancellationToken cancellationToken) {
         // Convert radius to bounding box
-        var latDiff = radius / 111.0; // Approx. 111 km per degree of latitude
-        var lonDiff = radius / (111.0 * System.Math.Cos(latitude * System.Math.PI / 180));
+        var latDiff = radiusKm / 111.0; // Approx. 111 km per degree of latitude
+        var lonDiff = radiusKm / (111.0 * System.Math.Cos(latitude * System.Math.PI / 180));
         var minLat = latitude - latDiff;
         var maxLat = latitude + latDiff;
         var minLon = longitude - lonDiff;
@@ -124,10 +126,19 @@ public class AddressService : IAddressService {
 
     public async Task<Address> QueryByGeohashAsync(string geohash, CancellationToken cancellationToken) {
         // Query database for geohash prefix
+
+        var location = _geoHash.Decode(geohash);
+        var cachedAddresses = _cache.Query(location.Latitude - 0.0001, location.Latitude + 0.0001, location.Longitude - 0.0001, location.Longitude + 0.0001);
+        if (cachedAddresses?.Count > 0) {
+            return cachedAddresses.First(); // Return the first match from the cache
+        }
+
         var address = await _repository.QueryByGeohashAsync(geohash, cancellationToken);
 
-        // Add results to cache
-        _cache.Add(address.Latitude, address.Longitude, address.Id.ToString(), address);
+        if (address is not null) {
+            // Add results to cache
+            _cache.Add(address.Latitude, address.Longitude, address.Id.ToString(), address);
+        }
 
         return address;
     }

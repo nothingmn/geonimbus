@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus", "GeoNimbus\GeoNimbus.csproj", "{9F5E6D71-C2B3-4D3E-8ECB-FCC6DA5F4FE6}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.LibNetTopologySuite", "GeoNimbus.LibNetTopologySuite\GeoNimbus.LibNetTopologySuite.csproj", "{BC2BC440-C155-430C-B987-184C2B015C83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.GeoHash", "GeoNimbus.GeoHash\GeoNimbus.GeoHash.csproj", "{4E235AC5-AF31-4C70-8075-8D44ACB646D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoNimbus.Postgres", "GeoNimbus.Postgres\GeoNimbus.Postgres.csproj", "{74C1CC64-04D2-4207-91F5-0857BF18B316}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{4E235AC5-AF31-4C70-8075-8D44ACB646D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E235AC5-AF31-4C70-8075-8D44ACB646D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E235AC5-AF31-4C70-8075-8D44ACB646D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C1CC64-04D2-4207-91F5-0857BF18B316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C1CC64-04D2-4207-91F5-0857BF18B316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C1CC64-04D2-4207-91F5-0857BF18B316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C1CC64-04D2-4207-91F5-0857BF18B316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

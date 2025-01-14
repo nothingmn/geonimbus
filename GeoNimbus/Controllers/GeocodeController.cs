@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GeoNimbus.Controllers;
 
 [ApiController]
-[Route("geocode")]
+[Route("api/")]
 public class GeocodeController : ControllerBase {
     private readonly ILogger<GeocodeController> _logger;
     private readonly IAddressService _addressService;
@@ -79,10 +79,10 @@ public class GeocodeController : ControllerBase {
     }
 
     [HttpGet("radius")]
-    public async Task<IActionResult> QueryByRadiusAsync([FromQuery] double latitude, [FromQuery] double longitude, [FromQuery] double radius) {
+    public async Task<IActionResult> QueryByRadiusAsync([FromQuery] double latitude, [FromQuery] double longitude, [FromQuery] double radiusKm) {
         try {
             using var cts = new CancellationTokenSource(_timeout);
-            var result = await _addressService.QueryByRadiusAsync(latitude, longitude, radius, cts.Token);
+            var result = await _addressService.QueryByRadiusAsync(latitude, longitude, radiusKm, cts.Token);
             return Ok(result);
         } catch (OperationCanceledException) {
             return StatusCode(408, "The operation was canceled."); // HTTP 408: Request Timeout

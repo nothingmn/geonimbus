@@ -1,6 +1,9 @@
 @GeoNimbus_HostAddress = http://localhost:5072
 
-GET {{GeoNimbus_HostAddress}}/weatherforecast/
+GET {{GeoNimbus_HostAddress}}/api/geocode/
+Accept: application/json
+
+GET {{GeoNimbus_HostAddress}}/api/geohash/
 Accept: application/json
 
 ###

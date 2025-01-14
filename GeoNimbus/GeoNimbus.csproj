@@ -19,6 +19,7 @@
     <ProjectReference Include="..\GeoNimbus.Core\GeoNimbus.Core.csproj" />
     <ProjectReference Include="..\GeoNimbus.GeoHash\GeoNimbus.GeoHash.csproj" />
     <ProjectReference Include="..\GeoNimbus.LibNetTopologySuite\GeoNimbus.LibNetTopologySuite.csproj" />
+    <ProjectReference Include="..\GeoNimbus.Postgres\GeoNimbus.Postgres.csproj" />
     <ProjectReference Include="..\GeoNimbus.Sqlite\GeoNimbus.Sqlite.csproj" />
   </ItemGroup>
 
